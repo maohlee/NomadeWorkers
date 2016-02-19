@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">NomadeWorkers</string>
+    <string name="name_list_intervention">Liste des interventions</string>
     <string name="action_settings">Settings</string>
+    <string name="action_add_intervention">Add intervention</string>
+    <string name="action_list_client">Clients</string>
+    <string name="action_sync">Synchronisation</string>
 </resources>

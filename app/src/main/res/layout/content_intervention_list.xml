@@ -12,8 +12,10 @@
     tools:context="com.example.mao.nomadeworkers.InterventionListActivity"
     tools:showIn="@layout/activity_intervention_list">
 
-    <TextView
+    <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:id="@+id/listViewIntervention"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true" />
 </RelativeLayout>
