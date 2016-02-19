@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.mao.nomadeworkers.InterventionListActivity">
+    tools:context="com.example.mao.nomadeworkers.InterventionCreateActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -21,6 +21,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_intervention_list" />
+    <include layout="@layout/content_intervention_create" />
 
 </android.support.design.widget.CoordinatorLayout>
