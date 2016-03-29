@@ -1,4 +1,4 @@
-package com.example.mao.nomadeworkers;
+package com.example.mao.nomadeworkers.activities;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.mao.nomadeworkers.R;
+
 public class InterventionListActivity extends AppCompatActivity {
 
     @Override
@@ -17,6 +19,20 @@ public class InterventionListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_intervention_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+//        EXEMPLE UTILISATION ORM :
+
+//        Client swan = new Client("mougnoz", "swan", "M", "bla bla bla", "0123456789");
+//        swan.save();
+//
+//        Calendar tps = Calendar.getInstance();
+//        tps.set(2016, 12, 1);
+//        Intervention int1 = new Intervention("1ere intervention", tps, "pas fait", swan);
+//        Intervention int2 = new Intervention("2eme intervention", tps, "pas fait", swan);
+//        int1.save();
+//        int2.save();
+//
+//        List<Intervention> interventionList = swan.getInterventions();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
