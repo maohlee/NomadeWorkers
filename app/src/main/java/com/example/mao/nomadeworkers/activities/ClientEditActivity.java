@@ -79,32 +79,23 @@ public class ClientEditActivity extends AppCompatActivity
         EditText adresse = (EditText) findViewById(R.id.adresse_client_input);
         adresse.setText(this.client.getAdresse());
 
-        // todo email
+        EditText email = (EditText) findViewById(R.id.email_client_input);
+        email.setText(this.client.getEmail());
+    }
+
+    protected boolean validateInput(int id)
+    {
+        EditText input = (EditText) findViewById(id);
+        return !input.getText().toString().isEmpty();
     }
 
     protected boolean validateForm()
     {
-        EditText nom = (EditText) findViewById(R.id.nom_client_input);
-        if (nom.getText().toString().isEmpty()) {
-            return false;
-        }
-
-        EditText prenom = (EditText) findViewById(R.id.prenom_client_input);
-        if (prenom.getText().toString().isEmpty()) {
-            return false;
-        }
-
-        EditText telephone = (EditText) findViewById(R.id.telephone_client_input);
-        if (telephone.getText().toString().isEmpty()) {
-            return false;
-        }
-
-        EditText adresse = (EditText) findViewById(R.id.adresse_client_input);
-        if (adresse.getText().toString().isEmpty()) {
-            return false;
-        }
-
-        return true;
+        return validateInput(R.id.nom_client_input) &&
+                validateInput(R.id.prenom_client_input) &&
+                validateInput(R.id.telephone_client_input) &&
+                validateInput(R.id.adresse_client_input) &&
+                validateInput(R.id.email_client_input);
     }
 
     protected boolean saveClient()

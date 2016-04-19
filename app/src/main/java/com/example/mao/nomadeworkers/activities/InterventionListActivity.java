@@ -47,15 +47,6 @@ public class InterventionListActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
-        Button getTextBtn = (Button)findViewById(R.id.button);
-        getTextBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(InterventionListActivity.this, ClientShowActivity.class);
-                startActivityForResult(intent, 0);
-            }
-        });
     }
 
     @Override

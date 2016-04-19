@@ -21,7 +21,13 @@ public class ClientShowActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_show);
 
-        this.client = Client.findById(Client.class, 10);
+        Intent intent = getIntent();
+        long clientId = intent.getLongExtra(ClientShowActivity.CLIENT_ID, 0);
+        if (clientId != 0) {
+            this.client = Client.findById(Client.class, clientId);
+        } else {
+            finish();
+        }
 
         TextView nom = (TextView) findViewById(R.id.nom_client);
         String nomComplet = client.getCivilite() + ". " + client.getNom() + " " + client.getPrenom();
@@ -33,7 +39,8 @@ public class ClientShowActivity extends AppCompatActivity
         TextView adresse = (TextView) findViewById(R.id.adresse_client);
         adresse.setText(client.getAdresse());
 
-        // todo: ajouter email
+        TextView email = (TextView) findViewById(R.id.email_client);
+        email.setText(client.getEmail());
 
         Button modifierBtn = (Button) findViewById(R.id.modifier_client_btn);
         modifierBtn.setOnClickListener(new View.OnClickListener()

@@ -13,8 +13,6 @@ public class Client extends SugarRecord
     private String telephone;
     private String email;
 
-//    todo: ajouter email
-
     public Client() {}
 
     public Client(String nom, String prenom, String civilite, String adresse, String telephone, String email)
