@@ -120,7 +120,7 @@ public class InterventionCreateActivity extends AppCompatActivity {
                 if (options[item].equals("Take Photo"))
                 {
                     Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    File f = new File(Environment.getDataDirectory(), nextNomPhoto);
+                    File f = new File(getFilesDir(), nextNomPhoto);
                     intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
                     startActivityForResult(intent, 1);
                 }
