@@ -15,7 +15,6 @@ import android.widget.TextView;
 
 import com.example.mao.nomadeworkers.R;
 import com.example.mao.nomadeworkers.model.Client;
-import com.example.mao.nomadeworkers.model.Client;
 import com.example.mao.nomadeworkers.model.Intervention;
 import com.orm.SugarRecord;
 
