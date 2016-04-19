@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.mao.nomadeworkers.R;
+import com.example.mao.nomadeworkers.model.Client;
 
 public class InterventionListActivity extends AppCompatActivity {
 
@@ -22,9 +23,9 @@ public class InterventionListActivity extends AppCompatActivity {
 
 //        EXEMPLE UTILISATION ORM :
 
-//        Client swan = new Client("mougnoz", "swan", "M", "bla bla bla", "0123456789");
-//        swan.save();
-//
+        Client swan = new Client("mougnoz", "swan", "M", "bla bla bla", "0123456789", "sqdqs@sqdd.com");
+        swan.save();
+
 //        Calendar tps = Calendar.getInstance();
 //        tps.set(2016, 12, 1);
 //        Intervention int1 = new Intervention("1ere intervention", tps, "pas fait", swan);
