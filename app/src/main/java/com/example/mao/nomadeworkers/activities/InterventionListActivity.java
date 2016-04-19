@@ -1,5 +1,6 @@
 package com.example.mao.nomadeworkers.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,8 +17,10 @@ import com.example.mao.nomadeworkers.R;
 import com.example.mao.nomadeworkers.model.Client;
 import com.example.mao.nomadeworkers.model.Client;
 import com.example.mao.nomadeworkers.model.Intervention;
+import com.orm.SugarRecord;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -33,9 +36,9 @@ public class InterventionListActivity extends AppCompatActivity {
 
 //        EXEMPLE UTILISATION ORM :
 
-        Client swan = new Client("mougnoz", "swan", "M", "bla bla bla", "0123456789", "sqdqs@sqdd.com");
-        swan.save();
-
+//        Client swan = new Client("mougnoz", "swan", "M", "bla bla bla", "0123456789");
+//        swan.save();
+//
 //        Calendar tps = Calendar.getInstance();
 //        tps.set(2016, 12, 1);
 //        Intervention int1 = new Intervention("1ere intervention", tps, "pas fait", swan);
@@ -45,19 +48,25 @@ public class InterventionListActivity extends AppCompatActivity {
 //
 //        List<Intervention> interventionList = swan.getInterventions();
 
+        List<Intervention> interventionList = Intervention.listAll(Intervention.class);
+
+
         tableLayout = (TableLayout)findViewById(R.id.listInterventionLayout);
 
-        for(int i=0;i<20;i++){
-            Calendar c = Calendar.getInstance();
+        for(Intervention i : interventionList)
+        {
             View tableRow = LayoutInflater.from(this).inflate(R.layout.list_intervention_row, null, false);
             TextView dateInter  = (TextView) tableRow.findViewById(R.id.dateIntervention);
             TextView descInter  = (TextView) tableRow.findViewById(R.id.descriptionIntervention);
 
             SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-            String formattedDate = df.format(c.getTime());
-            String desc = "12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890";
+            String formattedDate = df.format(i.getDate().getTime());
             dateInter.setText(formattedDate);
-            descInter.setText(desc.substring(0,45)+"[...]");
+            if(i.getDescription().length() < 45)
+                descInter.setText(i.getDescription()+"[...]");
+            else
+                descInter.setText(i.getDescription().substring(0, 45) + "[...]");
+
             tableLayout.addView(tableRow);
         }
 
@@ -65,8 +74,20 @@ public class InterventionListActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+//                Client swan = new Client("mougnoz", "swan", "M", "bla bla bla", "0123456789");
+//                swan.save();
+
+//                Calendar tps = Calendar.getInstance();
+//                tps.set(2016, 12, 1);
+//                Intervention int1 = new Intervention("1ere intervention magueule", tps, "pas fait", swan);
+//                Intervention int2 = new Intervention("2eme intervention wesh", tps, "pas fait", swan);
+//                int1.save();
+//                int2.save();
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                Intent intent = new Intent(InterventionListActivity.this,InterventionCreateActivity.class);
+                startActivity(intent);
             }
         });
     }
