@@ -5,15 +5,25 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TableLayout;
+import android.widget.TextView;
 
 import com.example.mao.nomadeworkers.R;
 import com.example.mao.nomadeworkers.model.Client;
+import com.example.mao.nomadeworkers.model.Client;
+import com.example.mao.nomadeworkers.model.Intervention;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.List;
 
 public class InterventionListActivity extends AppCompatActivity {
 
+    private TableLayout tableLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +44,22 @@ public class InterventionListActivity extends AppCompatActivity {
 //        int2.save();
 //
 //        List<Intervention> interventionList = swan.getInterventions();
+
+        tableLayout = (TableLayout)findViewById(R.id.listInterventionLayout);
+
+        for(int i=0;i<20;i++){
+            Calendar c = Calendar.getInstance();
+            View tableRow = LayoutInflater.from(this).inflate(R.layout.list_intervention_row, null, false);
+            TextView dateInter  = (TextView) tableRow.findViewById(R.id.dateIntervention);
+            TextView descInter  = (TextView) tableRow.findViewById(R.id.descriptionIntervention);
+
+            SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+            String formattedDate = df.format(c.getTime());
+            String desc = "12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890";
+            dateInter.setText(formattedDate);
+            descInter.setText(desc.substring(0,45)+"[...]");
+            tableLayout.addView(tableRow);
+        }
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
