@@ -25,6 +25,8 @@
         </activity>
         <activity android:name=".activities.ClientShowActivity">
         </activity>
+        <activity android:name=".activities.ClientEditActivity">
+        </activity>
     </application>
 
 </manifest>
