@@ -74,7 +74,7 @@ public class InterventionListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-//                Client swan = new Client("mougnoz", "swan", "M", "bla bla bla", "0123456789");
+//                Client swan = new Client("mougnoz2", "swan2", "M", "bla bla bla", "0123456789", "swan.mougnoz@gmail.com");
 //                swan.save();
 
 //                Calendar tps = Calendar.getInstance();

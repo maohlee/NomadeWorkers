@@ -22,6 +22,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.mao.nomadeworkers.R;
@@ -30,19 +31,32 @@ import com.example.mao.nomadeworkers.model.Photo;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
 public class InterventionCreateActivity extends AppCompatActivity {
     private EditText edittext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intervention_create2);
         ImageButton b;
         ImageView viewImage;
-        b=(ImageButton)findViewById(R.id.takePhotoInt);
+
+
+        List<String> status = Arrays.asList("Terminée","En cours","A venir") ;
+        List<Client> clients = Client.listAll(Client.class);
+        Spinner spinner = (Spinner)this.findViewById(R.id.chooseClient);
+        Spinner spinner2 = (Spinner)this.findViewById(R.id.chooseIntStatus);
+        ArrayAdapter<Client> clientsAdapter = new ArrayAdapter<Client>(this, android.R.layout.simple_spinner_dropdown_item,clients);
+        ArrayAdapter<String> statusAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,status);
+        spinner.setAdapter(clientsAdapter);
+        spinner2.setAdapter(statusAdapter);
+
+        b = (ImageButton) findViewById(R.id.takePhotoInt);
         //viewImage=(ImageView)findViewById(R.id.viewImage);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,8 +97,8 @@ public class InterventionCreateActivity extends AppCompatActivity {
 
     private void updateLabel() {
 
-        String myFormat = "MM/dd/yy"; //In which you need put here
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+        String myFormat = "dd/MM/yy"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.FRANCE);
 
         edittext.setText(sdf.format(myCalendar.getTime()));
     }
@@ -108,7 +122,7 @@ public class InterventionCreateActivity extends AppCompatActivity {
 
     private void selectImage() {
 
-        final CharSequence[] options = { "Take Photo", "Cancel" };
+        final CharSequence[] options = { "Prendre une photo", "Annuler" };
         List<Photo> listPhotos = Photo.listAll(Photo.class);
         final String nextNomPhoto = "photo_intervention_" + String.valueOf(listPhotos.size()+ 1)  +".jpg";
 
@@ -117,14 +131,14 @@ public class InterventionCreateActivity extends AppCompatActivity {
         builder.setItems(options, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int item) {
-                if (options[item].equals("Take Photo"))
+                if (options[item].equals("Prendre une photo"))
                 {
                     Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                     File f = new File(getFilesDir(), nextNomPhoto);
                     intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
                     startActivityForResult(intent, 1);
                 }
-                else if (options[item].equals("Cancel")) {
+                else if (options[item].equals("Annuler")) {
                     dialog.dismiss();
                 }
             }

@@ -89,4 +89,9 @@ public class Client extends SugarRecord
     {
         this.email = email;
     }
+
+    @Override
+    public String toString() {
+        return this.nom+" "+this.prenom;
+    }
 }
