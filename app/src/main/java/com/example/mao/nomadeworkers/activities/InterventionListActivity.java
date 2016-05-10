@@ -23,20 +23,6 @@ public class InterventionListActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        EXEMPLE UTILISATION ORM :
-
-//        Client swan = new Client("mougnoz", "swan", "M", "bla bla bla", "0123456789");
-//        swan.save();
-//
-//        Calendar tps = Calendar.getInstance();
-//        tps.set(2016, 12, 1);
-//        Intervention int1 = new Intervention("1ere intervention", tps, "pas fait", swan);
-//        Intervention int2 = new Intervention("2eme intervention", tps, "pas fait", swan);
-//        int1.save();
-//        int2.save();
-//
-//        List<Intervention> interventionList = swan.getInterventions();
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener()
         {
@@ -45,6 +31,17 @@ public class InterventionListActivity extends AppCompatActivity {
             {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+            }
+        });
+
+        Button go = (Button) findViewById(R.id.golist);
+        go.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent goList = new Intent(InterventionListActivity.this, ClientListActivity.class);
+                startActivity(goList);
             }
         });
     }
